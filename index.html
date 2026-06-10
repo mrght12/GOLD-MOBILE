@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>GOLD MOBILE • Сетевой оператор</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0a0c0f 0%, #1a1e24 100%);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      margin: 0;
+      color: #e5e9f0;
+    }
+
+    .gold-container {
+      max-width: 720px;
+      width: 100%;
+      background: rgba(18, 22, 28, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.15) inset;
+      border-radius: 3rem 3rem 2.5rem 2.5rem;
+      padding: 2.4rem 2rem 2.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 500px) {
+      .gold-container {
+        padding: 1.8rem 1.2rem 2.2rem;
+        border-radius: 2.2rem;
+      }
+    }
+
+    /* лого / заголовок */
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .brand h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      background: linear-gradient(180deg, #f9e076 0%, #c89b2e 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 18px rgba(212, 175, 55, 0.6);
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .brand span {
+      background: #c89b2e;
+      color: #0a0c0f;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #f3cd5b, #b8860b);
+      box-shadow: 0 0 15px #b8860b;
+      margin-left: 0.2rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #a9b7cc;
+      letter-spacing: 2px;
+      margin-top: -0.8rem;
+      text-transform: uppercase;
+      border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+      padding-bottom: 0.7rem;
+    }
+
+    /* информация об устройстве */
+    .device-card {
+      background: rgba(10, 12, 15, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 2rem;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .device-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .device-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b8860b;
+      font-weight: 600;
+    }
+
+    .device-name {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(to right, #ffffff, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      word-break: break-word;
+    }
+
+    .squad-badge {
+      background: #1e2530;
+      padding: 0.4rem 1.2rem;
+      border-radius: 3rem;
+      color: #d4af37;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 1px solid #d4af37;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+
+    .price-tag {
+      background: #0f1115;
+      border-radius: 2rem;
+      padding: 0.3rem 1.2rem;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #f9e076;
+      border: 1px solid #c89b2e;
+      letter-spacing: 1px;
+    }
+
+    /* Серверы */
+    .servers-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .server-row {
+      background: rgba(20, 24, 30, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .server-row:hover {
+      border-color: #d4af37;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
+    }
+
+    .server-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: #f0e6c5;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .server-name i {
+      color: #d4af37;
+      font-style: normal;
+      font-size: 1.2rem;
+    }
+
+    .server-status {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .free-badge {
+      background: #1d4b2e;
+      color: #b9f5b0;
+      font-weight: 700;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      border: 1px solid #2ecc71;
+      text-transform: uppercase;
+    }
+
+    .connect-btn {
+      background: transparent;
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      font-weight: 700;
+      padding: 0.5rem 1.4rem;
+      border-radius: 2.5rem;
+      font-size: 0.9rem;
+      cursor: default;
+      transition: 0.2s;
+      letter-spacing: 1px;
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* черный список */
+    .blacklist-section {
+      background: rgba(15, 10, 10, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(220, 20, 60, 0.6);
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .blacklist-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      color: #ff8a8a;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .blacklist-devices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      min-height: 2.5rem;
+    }
+
+    .bl-chip {
+      background: #2a1a1f;
+      border: 1px solid #b22222;
+      color: #ffb3b3;
+      padding: 0.4rem 1.1rem;
+      border-radius: 3rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .remove-chip {
+      cursor: pointer;
+      font-weight: bold;
+      color: #ff7b7b;
+      margin-left: 0.2rem;
+      transition: 0.2s;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .remove-chip:hover {
+      color: white;
+      transform: scale(1.2);
+    }
+
+    .add-blacklist {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .add-blacklist input {
+      background: #1c1f26;
+      border: 1px solid #b22222;
+      padding: 0.6rem 1rem;
+      border-radius: 2.5rem;
+      color: #f0e6c5;
+      font-weight: 500;
+      outline: none;
+      flex: 2;
+      min-width: 160px;
+    }
+
+    .add-blacklist input::placeholder {
+      color: #8a8a8a;
+      font-size: 0.8rem;
+    }
+
+    .gold-btn {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      border: none;
+      color: #0a0c0f;
+      font-weight: 800;
+      padding: 0.6rem 1.5rem;
+      border-radius: 3rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .gold-btn:hover {
+      background: linear-gradient(135deg, #f9e076, #d4af37);
+      box-shadow: 0 0 22px #f9e076;
+      color: black;
+    }
+
+    /* донат */
+    .donate-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .donate-link {
+      background: #0b0e12;
+      border: 2px solid #d4af37;
+      color: #d4af37;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.9rem 2.8rem;
+      border-radius: 4rem;
+      text-decoration: none;
+      letter-spacing: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.3s;
+      background: rgba(20, 20, 20, 0.9);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+      text-transform: uppercase;
+    }
+
+    .donate-link:hover {
+      background: #d4af37;
+      color: #000;
+      box-shadow: 0 0 38px #f9e076;
+      border-color: #fff3c9;
+    }
+
+    .description-text {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #b9c7dd;
+      margin-top: -0.2rem;
+      font-weight: 400;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    hr {
+      border-color: rgba(212, 175, 55, 0.25);
+      margin: 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="gold-container">
+    
+    <!-- Заголовок -->
+    <div class="brand">
+      <h1>GOLD MOBILE</h1>
+      <span>ОПЕРАТОР</span>
+    </div>
+    <div class="subtitle">✦ сетевая инфраструктура ✦</div>
+
+    <!-- Информация об устройстве / отряд / цена -->
+    <div class="device-card">
+      <div class="device-info">
+        <span class="device-label">имя устройства</span>
+        <span class="device-name" id="deviceNameDisplay">GOLD-Node X1</span>
+      </div>
+      <div class="squad-badge">
+        <span>🔰</span> отряд <span id="squadNumberDisplay">047</span>
+      </div>
+      <div class="price-tag" id="mineralPriceDisplay">30₽</div>
+    </div>
+
+    <!-- Серверы WiFi (3 сервера, первый бесплатный) -->
+    <div class="servers-section">
+      <!-- Сервер 1 (бесплатный) -->
+      <div class="server-row">
+        <div class="server-name">
+          <i>📡</i> GOLD MOBILE <span style="color:#d4af37;">(server №1)</span>
+        </div>
+        <div class="server-status">
+          <span class="free-badge">БЕСПЛАТНЫЙ</span>
+          <span class="connect-btn">ПОДКЛЮЧЕН</span>
+        </div>
+      </div>
+      
+      <!-- Сервер 2 -->
+      <div class="server-row">
+        <div class="server-name">
+          <i>📡</i> GOLD MOBILE <span style="color:#d4af37;">(server №2)</span>
+        </div>
+        <div class="server-status">
+          <span class="free-badge" style="background:#2c3e2c; color:#ccc; border-color:#888;">ТАРИФ</span>
+          <span class="connect-btn">ДОСТУПЕН</span>
+        </div>
+      </div>
+
+      <!-- Сервер 3 -->
+      <div class="server-row">
+        <div class="server-name">
+          <i>📡</i> GOLD MOBILE <span style="color:#d4af37;">(server №3)</span>
+        </div>
+        <div class="server-status">
+          <span class="free-badge" style="background:#2c3e2c; color:#ccc; border-color:#888;">ТАРИФ</span>
+          <span class="connect-btn">ДОСТУПЕН</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Описание: номер отряда, имя устройства, минеральная 30₽ + первый сервер бесплатный -->
+    <div class="description-text">
+      <span>🔹 отряд <strong id="descSquad">047</strong></span>
+      <span>•</span>
+      <span>устройство <strong id="descDevice">GOLD-Node X1</strong></span>
+      <span>•</span>
+      <span>минеральная <strong>30₽</strong></span>
+      <span>•</span>
+      <span style="color:#d4af37;">сервер №1 — бесплатный</span>
+    </div>
+
+    <!-- ЧЕРНЫЙ СПИСОК УСТРОЙСТВ (легко заменяемый) -->
+    <div class="blacklist-section">
+      <div class="blacklist-header">
+        <span>🚫 ЧЕРНЫЙ СПИСОК УСТРОЙСТВ</span>
+        <span style="font-size:0.7rem; color:#aaa;">блокировка сети</span>
+      </div>
+      <div class="blacklist-devices" id="blacklistContainer">
+        <!-- динамически заполняется -->
+      </div>
+      <div class="add-blacklist">
+        <input type="text" id="blacklistInput" placeholder="MAC / IMEI / имя устройства" maxlength="40">
+        <button class="gold-btn" id="addBlacklistBtn">➕ добавить</button>
+      </div>
+      <div style="font-size:0.7rem; color:#9a8c7a; margin-top:0.5rem; text-align:right;">
+        нажмите ✕ для удаления
+      </div>
+    </div>
+
+    <!-- Кнопка доната (DonationAlerts) -->
+    <div class="donate-footer">
+      <a href="https://www.donationalerts.com/r/mrght_00" target="_blank" rel="noopener noreferrer" class="donate-link">
+        💛 ПОДДЕРЖАТЬ DONATE
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- НАСТРАИВАЕМЫЕ ДАННЫЕ (легко заменяемые) ----------
+      // Номер отряда
+      const squadNumber = "047";
+      // Имя устройства
+      const deviceName = "GOLD-Node X1";
+      // Минеральная цена (текст)
+      const mineralPrice = "30₽";
+
+      // Первоначальный черный список устройств (можно менять прямо здесь)
+      const initialBlacklist = [
+        "Device-AB:7F:3C",
+        "Router-X9-omega",
+        "Unknown-Bridge-01"
+      ];
+
+      // ---------- ЭЛЕМЕНТЫ DOM ----------
+      const deviceNameDisplay = document.getElementById('deviceNameDisplay');
+      const squadNumberDisplay = document.getElementById('squadNumberDisplay');
+      const mineralPriceDisplay = document.getElementById('mineralPriceDisplay');
+      const descSquad = document.getElementById('descSquad');
+      const descDevice = document.getElementById('descDevice');
+      const blacklistContainer = document.getElementById('blacklistContainer');
+      const blacklistInput = document.getElementById('blacklistInput');
+      const addBlacklistBtn = document.getElementById('addBlacklistBtn');
+
+      // Установка данных в интерфейс
+      deviceNameDisplay.textContent = deviceName;
+      squadNumberDisplay.textContent = squadNumber;
+      mineralPriceDisplay.textContent = mineralPrice;
+      descSquad.textContent = squadNumber;
+      descDevice.textContent = deviceName;
+
+      // Массив черного списка (изменяемый)
+      let blacklistDevices = [...initialBlacklist];
+
+      // Функция рендера черного списка
+      function renderBlacklist() {
+        if (!blacklistContainer) return;
+        blacklistContainer.innerHTML = '';
+        
+        if (blacklistDevices.length === 0) {
+          blacklistContainer.innerHTML = '<span style="color:#6b6b6b; font-style:italic; padding:0.3rem 0;">список пуст</span>';
+          return;
+        }
+
+        blacklistDevices.forEach((device, index) => {
+          const chip = document.createElement('div');
+          chip.className = 'bl-chip';
+          chip.innerHTML = `
+            <span>⛔ ${escapeHTML(device)}</span>
+            <span class="remove-chip" data-index="${index}" title="Удалить устройство">✕</span>
+          `;
+          blacklistContainer.appendChild(chip);
+        });
+
+        // Добавляем обработчики на кнопки удаления
+        document.querySelectorAll('.remove-chip').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            const index = parseInt(this.getAttribute('data-index'), 10);
+            if (!isNaN(index) && index >= 0 && index < blacklistDevices.length) {
+              blacklistDevices.splice(index, 1);
+              renderBlacklist();
+            }
+          });
+        });
+      }
+
+      // Простая защита от XSS при вставке
+      function escapeHTML(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      // Добавление нового устройства в черный список
+      function addToBlacklist() {
+        const rawValue = blacklistInput.value.trim();
+        if (rawValue === '') {
+          alert('Введите идентификатор устройства для блокировки');
+          return;
+        }
+        // Проверка на дубликат (игнорируем регистр и пробелы для базовой проверки)
+        const normalized = rawValue.toLowerCase().replace(/\s+/g, '');
+        const duplicate = blacklistDevices.some(item => 
+          item.toLowerCase().replace(/\s+/g, '') === normalized
+        );
+        if (duplicate) {
+          alert('Такое устройство уже в чёрном списке');
+          return;
+        }
+        
+        blacklistDevices.push(rawValue);
+        blacklistInput.value = '';
+        renderBlacklist();
+      }
+
+      // Обработчик кнопки "добавить"
+      addBlacklistBtn.addEventListener('click', addToBlacklist);
+
+      // Возможность добавления по Enter
+      blacklistInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addToBlacklist();
+        }
+      });
+
+      // Инициализация рендера
+      renderBlacklist();
+
+      // Дополнительно: можно менять данные через консоль (для демонстрации "легко заменяемый")
+      // Например: window.updateGoldData({ squad: "099", device: "UltraNode", price: "45₽" });
+      window.updateGoldData = function({ squad, device, price } = {}) {
+        if (squad) {
+          squadNumberDisplay.textContent = squad;
+          descSquad.textContent = squad;
+        }
+        if (device) {
+          deviceNameDisplay.textContent = device;
+          descDevice.textContent = device;
+        }
+        if (price) {
+          mineralPriceDisplay.textContent = price;
+        }
+      };
+
+      // Также можно программно менять чёрный список: window.setBlacklist([...])
+      window.setBlacklist = function(newList) {
+        if (Array.isArray(newList)) {
+          blacklistDevices = [...newList];
+          renderBlacklist();
+        }
+      };
+
+      console.log('GOLD MOBILE: интерфейс загружен. Сервер №1 бесплатный. Чёрный список редактируемый.');
+    })();
+  </script>
+</body>
+</html>
