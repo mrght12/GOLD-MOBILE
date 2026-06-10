@@ -103,53 +103,6 @@
       50% { box-shadow: 0 0 25px #fbe27a, 0 0 35px rgba(212, 175, 55, 0.5); }
     }
 
-    /* Примеры отрядов */
-    .squad-examples {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      justify-content: center;
-      margin-bottom: -0.5rem;
-    }
-
-    .squad-chip {
-      background: rgba(20, 18, 22, 0.8);
-      border: 1px solid rgba(212, 175, 55, 0.5);
-      border-radius: 2rem;
-      padding: 0.5rem 1.2rem;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #d4af37;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      backdrop-filter: blur(8px);
-      animation: chipFloat 3s ease-in-out infinite;
-      transition: all 0.3s ease;
-    }
-
-    .squad-chip:nth-child(1) { animation-delay: 0s; }
-    .squad-chip:nth-child(2) { animation-delay: 0.5s; }
-
-    .squad-chip:hover {
-      background: rgba(212, 175, 55, 0.15);
-      border-color: #fbe27a;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      transform: translateY(-3px);
-    }
-
-    @keyframes chipFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    .active-squad {
-      background: rgba(212, 175, 55, 0.2);
-      border-color: #fbe27a;
-      box-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
-      font-weight: 700;
-    }
-
     /* Карточка устройства */
     .device-row {
       background: rgba(12, 14, 18, 0.7);
@@ -171,7 +124,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .squad {
+    .squad-badge {
       background: #232126;
       padding: 0.4rem 1.4rem;
       border-radius: 2.5rem;
@@ -181,7 +134,7 @@
       transition: all 0.3s ease;
     }
 
-    .squad:hover {
+    .squad-badge:hover {
       background: #2a252e;
       box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
     }
@@ -456,7 +409,7 @@
     .footer-content {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
       align-items: center;
       color: #a3926b;
       font-size: 0.8rem;
@@ -482,10 +435,26 @@
       text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
     }
 
+    .schedule {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 2rem;
+      padding: 0.5rem 1.2rem;
+      color: #f9e076;
+      font-weight: 600;
+      font-size: 0.85rem;
+      animation: schedulePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes schedulePulse {
+      0%, 100% { box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); }
+      50% { box-shadow: 0 0 18px rgba(212, 175, 55, 0.5); }
+    }
+
     .copyright {
       color: #6b6048;
       font-size: 0.7rem;
-      margin-top: 0.3rem;
+      margin-top: 0.2rem;
     }
   </style>
 </head>
@@ -498,21 +467,11 @@
       <div class="operator-tag">СЕТЕВОЙ ОПЕРАТОР</div>
     </div>
 
-    <!-- Примеры отрядов -->
-    <div class="squad-examples">
-      <div class="squad-chip active-squad" id="squad1Btn">
-        <span>🔰</span> Отряд 047 <span style="font-size:0.7rem;">(текущий)</span>
-      </div>
-      <div class="squad-chip" id="squad2Btn">
-        <span>⚜️</span> Отряд 118 <span style="font-size:0.7rem;">(пример)</span>
-      </div>
-    </div>
-
-    <!-- Данные устройства / отряд / минеральная -->
+    <!-- Данные устройства / отряд 2 / минеральная -->
     <div class="device-row">
-      <span class="squad">🔰 отряд <span id="squadDisplay">047</span></span>
-      <span class="device-name" id="deviceDisplay">GOLD-Node X1</span>
-      <span class="mineral-badge" id="priceDisplay">30₽</span>
+      <span class="squad-badge">🔰 Отряд <span id="squadDisplay">2</span></span>
+      <span class="device-name" id="deviceDisplay">GOLD-Titan V2</span>
+      <span class="mineral-badge" id="priceDisplay">45₽</span>
     </div>
 
     <!-- МЕНЮ СО СПИСКОМ СЕРВЕРОВ -->
@@ -560,12 +519,12 @@
         ✦ В сообщении обязательно укажите:
       </div>
       <div class="highlight-data">
-        📌 отряд: <span id="instrSquad">047</span><br>
-        🚪 номер комнаты<br>
-        📱 имя устройства: <span id="instrDevice">GOLD-Node X1</span>
+        📌 Отряд: <span id="instrSquad">2</span><br>
+        🚪 Номер комнаты<br>
+        📱 Имя устройства: <span id="instrDevice">GOLD-Titan V2</span>
       </div>
       <div class="instruction-text" style="font-size:0.8rem; margin-top:0.3rem;">
-        (Пример сообщения: «Отряд 047, комната 12, устройство GOLD-Node X1»)
+        (Пример сообщения: «Отряд 2, комната 12, устройство GOLD-Titan V2»)
       </div>
       <div class="donate-button">
         <a href="https://www.donationalerts.com/r/mrght_00" target="_blank" rel="noopener noreferrer" class="donate-link">
@@ -576,15 +535,18 @@
 
   </div>
 
-  <!-- ПОДВАЛ -->
+  <!-- ПОДВАЛ с расписанием работы -->
   <div class="footer">
     <div class="footer-content">
       <div class="footer-links">
         <span>📡 GOLD MOBILE</span>
         <span>•</span>
-        <span>Сервер №1 бесплатный</span>
+        <span>Отряд 2</span>
         <span>•</span>
-        <span>Поддержка 24/7</span>
+        <span>Сервер №1 бесплатный</span>
+      </div>
+      <div class="schedule">
+        🕐 Время работы: 13:20 – 13:50 • 19:30 – 22:00
       </div>
       <div class="copyright">
         © 2026 GOLD MOBILE Network Operator • Все права защищены
@@ -594,80 +556,20 @@
 
   <script>
     (function() {
-      // ---------- ДАННЫЕ ОТРЯДОВ ----------
-      const squads = {
-        squad1: {
-          number: "047",
-          device: "GOLD-Node X1",
-          price: "30₽"
-        },
-        squad2: {
-          number: "118",
-          device: "GOLD-Titan V2",
-          price: "45₽"
-        }
-      };
+      // ---------- ДАННЫЕ ОТРЯДА 2 ----------
+      const squadNumber = "2";
+      const deviceName = "GOLD-Titan V2";
+      const mineralPrice = "45₽";
 
-      let currentSquad = 'squad1';
+      // Заполняем интерфейс
+      document.getElementById('squadDisplay').textContent = squadNumber;
+      document.getElementById('deviceDisplay').textContent = deviceName;
+      document.getElementById('priceDisplay').textContent = mineralPrice;
+      document.getElementById('instrSquad').textContent = squadNumber;
+      document.getElementById('instrDevice').textContent = deviceName;
 
-      // DOM элементы
-      const squadDisplay = document.getElementById('squadDisplay');
-      const deviceDisplay = document.getElementById('deviceDisplay');
-      const priceDisplay = document.getElementById('priceDisplay');
-      const instrSquad = document.getElementById('instrSquad');
-      const instrDevice = document.getElementById('instrDevice');
-      const squad1Btn = document.getElementById('squad1Btn');
-      const squad2Btn = document.getElementById('squad2Btn');
-
-      // Функция обновления интерфейса
-      function updateUI(squadKey) {
-        const data = squads[squadKey];
-        squadDisplay.textContent = data.number;
-        deviceDisplay.textContent = data.device;
-        priceDisplay.textContent = data.price;
-        instrSquad.textContent = data.number;
-        instrDevice.textContent = data.device;
-
-        // Обновляем активный чип
-        squad1Btn.classList.remove('active-squad');
-        squad2Btn.classList.remove('active-squad');
-        if (squadKey === 'squad1') {
-          squad1Btn.classList.add('active-squad');
-        } else {
-          squad2Btn.classList.add('active-squad');
-        }
-
-        // Анимация обновления данных
-        deviceDisplay.style.animation = 'none';
-        deviceDisplay.offsetHeight;
-        deviceDisplay.style.animation = 'rowSlide 0.4s ease-out';
-      }
-
-      // Обработчики переключения отрядов
-      squad1Btn.addEventListener('click', () => {
-        currentSquad = 'squad1';
-        updateUI('squad1');
-      });
-
-      squad2Btn.addEventListener('click', () => {
-        currentSquad = 'squad2';
-        updateUI('squad2');
-      });
-
-      // Для удобства: можно менять данные через консоль
-      window.switchSquad = function(squadId) {
-        if (squads[squadId]) {
-          currentSquad = squadId;
-          updateUI(squadId);
-        }
-      };
-
-      window.getCurrentSquad = function() {
-        return { id: currentSquad, ...squads[currentSquad] };
-      };
-
-      console.log('GOLD MOBILE загружен. Доступные отряды: squad1 (047), squad2 (118). Сервер №1 бесплатный.');
+      console.log('GOLD MOBILE загружен. Отряд 2 активен. Сервер №1 бесплатный. Время работы: 13:20-13:50 и 19:30-22:00');
     })();
   </script>
 </body>
-  </html>
+                                            </html>
